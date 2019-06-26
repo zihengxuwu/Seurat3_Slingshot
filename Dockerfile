@@ -41,7 +41,7 @@ RUN echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial-cran35/" | tee -a 
     apt-get install -y r-recommended=${R_VERSION} && \
     apt-get install -y r-base=${R_VERSION}
 RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
-RUN Rscript -e 'install.packages("Seurat")'
+RUN Rscript -e 'install.packages("Seurat", repos = "http://cran.us.r-project.org")'
 
 ##############
 ## BiocManager for installing bioconductor packages
