@@ -41,11 +41,12 @@ RUN echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial-cran35/" | tee -a 
     apt-get install -y r-recommended=${R_VERSION} && \
     apt-get install -y r-base=${R_VERSION}
 RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
+RUN Rscript -e 'install.packages("Seurat")'
 
 ##############
 ## BiocManager for installing bioconductor packages
 RUN echo "BiocManager::install(c(\"devtools\", \"remotes\", \"clusterExperiment\", \"drisso/fletcher2017data\", \"optparse\", \"logging\"), dependencies=TRUE)" > ${SRC}/install_pkgs.R  && \
-    echo "BiocManager::install(\"Seurat\", \"slingshot\", INSTALL_opts = c(\"--install-tests\"))" >> ${SRC}/install_pkgs.R && \
+    echo "BiocManager::install(\"scater\", \"slingshot\", INSTALL_opts = c(\"--install-tests\"))" >> ${SRC}/install_pkgs.R && \
     Rscript ${SRC}/install_pkgs.R
 
 ##############
