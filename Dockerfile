@@ -40,7 +40,6 @@ RUN echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial-cran35/" | tee -a 
     apt-get update && \ 
     apt-get install -y r-recommended=${R_VERSION} && \
     apt-get install -y r-base=${R_VERSION}
-RUN Rscript -e 'options(repos = c(CRAN = "http://cran.rstudio.com"))'
 RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.rstudio.com")'
 RUN Rscript -e 'install.packages("Seurat", repos = "http://cran.rstudio.com")'
 
